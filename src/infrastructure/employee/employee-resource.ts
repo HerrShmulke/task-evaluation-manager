@@ -1,8 +1,8 @@
-import { Employee } from "@/domain/employee/employee";
-import { IEmployeeRepository } from "@/domain/employee/repository/employee-repository";
-import { EmployeeProperties, EmployeeToSave } from "@/domain/employee/types";
-import { ApiEmployee } from "./api-employee";
-import { orderBy } from "lodash-es";
+import { Employee } from '@/domain/employee/employee';
+import { IEmployeeRepository } from '@/domain/employee/repository/employee-repository';
+import { EmployeeProperties, EmployeeToSave } from '@/domain/employee/types';
+import { ApiEmployee } from './api-employee';
+import { orderBy } from 'lodash-es';
 
 export class EmployeeResource implements IEmployeeRepository {
   private lastId: number;
@@ -22,32 +22,38 @@ export class EmployeeResource implements IEmployeeRepository {
 
     localStorage.setItem(this.lastIdKey, `${this.lastId}`);
 
-    const employeesList = JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiEmployee[];
+    const employeesList = JSON.parse(
+      localStorage.getItem(this.key) ?? '[]'
+    ) as ApiEmployee[];
 
-    employeesList.push(employeeObject)
+    employeesList.push(employeeObject);
     localStorage.setItem(this.key, JSON.stringify(employeesList));
 
-    return Promise.resolve(Employee.fromProperties({
-      id: employeeObject.id,
-      fullName: employeeObject.fullName,
-    }));
+    return Promise.resolve(
+      Employee.fromProperties({
+        id: employeeObject.id,
+        fullName: employeeObject.fullName
+      })
+    );
   }
 
   getAll(): Promise<Employee[]> {
     const apiEmployees = orderBy(
-      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiEmployee[], ['id'], ['desc']
-    )
+      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiEmployee[],
+      ['id'],
+      ['desc']
+    );
 
     return Promise.resolve(
-      apiEmployees.map(
-        (apiEmployee) => Employee.fromProperties(apiEmployee)
-      )
+      apiEmployees.map((apiEmployee) => Employee.fromProperties(apiEmployee))
     );
   }
 
   async getById(employeeId: number): Promise<Employee> {
     const allEmployees = this.getApiAll();
-    const foundEmployee = allEmployees.find((employee) => employee.id === employeeId);
+    const foundEmployee = allEmployees.find(
+      (employee) => employee.id === employeeId
+    );
 
     if (foundEmployee === undefined) {
       throw new Error('Employee not found');
@@ -56,10 +62,15 @@ export class EmployeeResource implements IEmployeeRepository {
     return Employee.fromProperties(foundEmployee);
   }
 
-  async update(employeeId: number, employee: EmployeeToSave): Promise<Employee> {
+  async update(
+    employeeId: number,
+    employee: EmployeeToSave
+  ): Promise<Employee> {
     const allEmployees = this.getApiAll();
 
-    const index = allEmployees.findIndex((findEmployee) => findEmployee.id === employeeId);
+    const index = allEmployees.findIndex(
+      (findEmployee) => findEmployee.id === employeeId
+    );
 
     allEmployees[index] = {
       id: employeeId,
@@ -77,15 +88,19 @@ export class EmployeeResource implements IEmployeeRepository {
   async delete(id: number) {
     const allEmployees = this.getApiAll();
 
-    const filteredEmployees = allEmployees.filter((employee) => employee.id !== id);
+    const filteredEmployees = allEmployees.filter(
+      (employee) => employee.id !== id
+    );
 
     localStorage.setItem(this.key, JSON.stringify(filteredEmployees));
   }
 
   private getApiAll(): ApiEmployee[] {
     const apiEmployees = orderBy(
-      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiEmployee[], ['id'], ['desc']
-    )
+      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiEmployee[],
+      ['id'],
+      ['desc']
+    );
 
     return apiEmployees;
   }

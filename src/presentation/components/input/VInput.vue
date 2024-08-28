@@ -4,7 +4,7 @@ interface IProps {
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  type: 'text',
+  type: 'text'
 });
 
 const model = defineModel<string>({

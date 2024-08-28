@@ -10,13 +10,13 @@ interface IProps {
 
 const props = withDefaults(defineProps<IProps>(), {
   tag: 'span',
-  size: 'default',
+  size: 'default'
 });
 
 const textSizeService = new TexSizeService();
 
 const textConfig = computed(() => textSizeService.getTextConfig(props.size));
-const fontSize = computed(() => textConfig.value.size)
+const fontSize = computed(() => textConfig.value.size);
 const fontLineHeight = computed(() => textConfig.value.lineHeight);
 </script>
 

@@ -1,8 +1,8 @@
-import { Project } from "@/domain/project/project";
-import { IProjectRepository } from "@/domain/project/repository/project-repository";
-import { ProjectProperties, ProjectToSave } from "@/domain/project/types";
-import { ApiProject } from "./api-project";
-import { orderBy } from "lodash-es";
+import { Project } from '@/domain/project/project';
+import { IProjectRepository } from '@/domain/project/repository/project-repository';
+import { ProjectProperties, ProjectToSave } from '@/domain/project/types';
+import { ApiProject } from './api-project';
+import { orderBy } from 'lodash-es';
 
 export class ProjectResource implements IProjectRepository {
   private lastId: number;
@@ -22,26 +22,30 @@ export class ProjectResource implements IProjectRepository {
 
     localStorage.setItem(this.lastIdKey, `${this.lastId}`);
 
-    const projectsList = JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiProject[];
+    const projectsList = JSON.parse(
+      localStorage.getItem(this.key) ?? '[]'
+    ) as ApiProject[];
 
-    projectsList.push(projectObject)
+    projectsList.push(projectObject);
     localStorage.setItem(this.key, JSON.stringify(projectsList));
 
-    return Promise.resolve(Project.fromProperties({
-      id: projectObject.id,
-      name: projectObject.name,
-    }));
+    return Promise.resolve(
+      Project.fromProperties({
+        id: projectObject.id,
+        name: projectObject.name
+      })
+    );
   }
 
   getAll(): Promise<Project[]> {
     const apiProjects = orderBy(
-      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiProject[], ['id'], ['desc']
-    )
+      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiProject[],
+      ['id'],
+      ['desc']
+    );
 
     return Promise.resolve(
-      apiProjects.map(
-        (apiProject) => Project.fromProperties(apiProject)
-      )
+      apiProjects.map((apiProject) => Project.fromProperties(apiProject))
     );
   }
 
@@ -59,7 +63,9 @@ export class ProjectResource implements IProjectRepository {
   async update(projectId: number, project: ProjectToSave): Promise<Project> {
     const allProjects = this.getApiAll();
 
-    const index = allProjects.findIndex((findProject) => findProject.id === projectId);
+    const index = allProjects.findIndex(
+      (findProject) => findProject.id === projectId
+    );
 
     allProjects[index] = {
       id: projectId,
@@ -84,8 +90,10 @@ export class ProjectResource implements IProjectRepository {
 
   private getApiAll(): ApiProject[] {
     const apiProjects = orderBy(
-      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiProject[], ['id'], ['desc']
-    )
+      JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiProject[],
+      ['id'],
+      ['desc']
+    );
 
     return apiProjects;
   }

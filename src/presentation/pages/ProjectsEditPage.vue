@@ -49,8 +49,15 @@ async function editProject() {
 
 <template>
   <PageWidth class="projects-create-page">
-    <VText tag="h1" class="projects-create-page__title" size="medium">Изменение проекта</VText>
-    <ProjectForm v-if="hasFormData" v-model="formData" submit-text="Изменить" @submit="editProject" />
+    <VText tag="h1" class="projects-create-page__title" size="medium"
+      >Изменение проекта</VText
+    >
+    <ProjectForm
+      v-if="hasFormData"
+      v-model="formData"
+      submit-text="Изменить"
+      @submit="editProject"
+    />
   </PageWidth>
 </template>
 

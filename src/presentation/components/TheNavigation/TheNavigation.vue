@@ -8,12 +8,16 @@ const routeService = inject(injectionKeys.routeService)!;
 const navigationList = [
   { name: 'Проекты', to: routeService.getProjects() },
   { name: 'Сотрудники', to: routeService.getEmployees() }
-]
+];
 </script>
 
 <template>
   <nav class="the-navigation">
-    <NavigationItem v-for="navigation in navigationList" :to="navigation.to">
+    <NavigationItem
+      v-for="navigation in navigationList"
+      :key="navigation.name"
+      :to="navigation.to"
+    >
       {{ navigation.name }}
     </NavigationItem>
   </nav>

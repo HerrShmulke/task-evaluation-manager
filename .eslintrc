@@ -1,4 +1,7 @@
 {
+  "env": {
+    "node": true
+  },
   "root": true,
   "parser": "vue-eslint-parser",
   "parserOptions": {

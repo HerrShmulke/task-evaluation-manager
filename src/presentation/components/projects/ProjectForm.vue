@@ -15,7 +15,7 @@ const emit = defineEmits<IEmits>();
 const props = defineProps<IProps>();
 
 const model = defineModel<Project>({
-  required: true,
+  required: true
 });
 
 function onSubmit() {
@@ -25,8 +25,14 @@ function onSubmit() {
 
 <template>
   <form class="project-form" @submit.prevent="onSubmit">
-    <TextField v-model="model.name" caption="Название проекта" placeholder="Рога и копыта" />
-    <VButton class="project-form__submit" type="submit">{{ props.submitText }}</VButton>
+    <TextField
+      v-model="model.name"
+      caption="Название проекта"
+      placeholder="Рога и копыта"
+    />
+    <VButton class="project-form__submit" type="submit">{{
+      props.submitText
+    }}</VButton>
   </form>
 </template>
 

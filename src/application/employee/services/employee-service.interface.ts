@@ -1,5 +1,5 @@
-import { EmployeeToSave } from "@/domain/employee/types";
-import { EmployeeDTO } from "../employee-dto";
+import { EmployeeToSave } from '@/domain/employee/types';
+import { EmployeeDTO } from '../employee-dto';
 
 export interface IEmployeeService {
   create(employee: EmployeeToSave): Promise<EmployeeDTO>;

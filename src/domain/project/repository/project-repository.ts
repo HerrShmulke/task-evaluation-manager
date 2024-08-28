@@ -1,5 +1,5 @@
-import { Project } from "../project";
-import { ProjectToSave } from "../types";
+import { Project } from '../project';
+import { ProjectToSave } from '../types';
 
 export interface IProjectRepository {
   getById(projectId: number): Promise<Project>;

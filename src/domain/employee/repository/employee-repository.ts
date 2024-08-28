@@ -1,5 +1,5 @@
-import { Employee } from "../employee";
-import { EmployeeToSave } from "../types";
+import { Employee } from '../employee';
+import { EmployeeToSave } from '../types';
 
 export interface IEmployeeRepository {
   getById(employeeId: number): Promise<Employee>;

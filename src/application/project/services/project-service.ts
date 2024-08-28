@@ -1,12 +1,12 @@
-import { IProjectRepository } from "@/domain/project/repository/project-repository";
-import { CreateProjectUseCase } from "../use-cases/create-project-use-case";
-import { ProjectToSave } from "@/domain/project/types";
-import { IProjectService } from "./project-service.interface";
-import { ProjectDTO } from "../project-dto";
-import { GetAllProjectsUseCase } from "../use-cases/get-all-projects-use-case";
-import { GetProjectUseCase } from "../use-cases/get-project-use-case";
-import { DeleteProjectUseCase } from "../use-cases/delete-project-use-case";
-import { UpdateProjectUseCase } from "../use-cases/update-project-use-case";
+import { IProjectRepository } from '@/domain/project/repository/project-repository';
+import { CreateProjectUseCase } from '../use-cases/create-project-use-case';
+import { ProjectToSave } from '@/domain/project/types';
+import { IProjectService } from './project-service.interface';
+import { ProjectDTO } from '../project-dto';
+import { GetAllProjectsUseCase } from '../use-cases/get-all-projects-use-case';
+import { GetProjectUseCase } from '../use-cases/get-project-use-case';
+import { DeleteProjectUseCase } from '../use-cases/delete-project-use-case';
+import { UpdateProjectUseCase } from '../use-cases/update-project-use-case';
 
 export class ProjectService implements IProjectService {
   private readonly createProjectUseCase: CreateProjectUseCase;
@@ -15,9 +15,7 @@ export class ProjectService implements IProjectService {
   private readonly deleteProjectUseCase: DeleteProjectUseCase;
   private readonly updateProjectUseCase: UpdateProjectUseCase;
 
-  constructor(
-    projectRepository: IProjectRepository
-  ) {
+  constructor(projectRepository: IProjectRepository) {
     this.createProjectUseCase = new CreateProjectUseCase(projectRepository);
     this.getAllProjectsUseCase = new GetAllProjectsUseCase(projectRepository);
     this.getProjectUseCase = new GetProjectUseCase(projectRepository);

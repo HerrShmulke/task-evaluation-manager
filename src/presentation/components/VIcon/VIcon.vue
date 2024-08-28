@@ -11,13 +11,14 @@ interface IProps {
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  size: 'medium',
+  size: 'medium'
 });
 
+// eslint-disable-next-line
 const iconsRecord: Record<IconName, ComponentInstance<any>> = {
-  'trash': TrashIcon,
-  'pencil': PencilIcon,
-}
+  trash: TrashIcon,
+  pencil: PencilIcon
+};
 
 const iconComponent = computed(() => iconsRecord[props.name]);
 const iconSize = computed(() => {
@@ -34,7 +35,7 @@ const iconSize = computed(() => {
   }
 
   return '1.6rem';
-})
+});
 </script>
 
 <template>

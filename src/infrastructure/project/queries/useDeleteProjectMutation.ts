@@ -1,8 +1,8 @@
-import { useMutation, useQueryClient } from "@tanstack/vue-query";
-import { projectQueryKey } from "../constants";
-import { injectionKeys } from "@/configuration/provide/injection-keys";
-import { inject } from "vue";
-import { ProjectDTO } from "@/application/project/project-dto";
+import { useMutation, useQueryClient } from '@tanstack/vue-query';
+import { projectQueryKey } from '../constants';
+import { injectionKeys } from '@/configuration/provide/injection-keys';
+import { inject } from 'vue';
+import { ProjectDTO } from '@/application/project/project-dto';
 
 export function useDeleteProjectMutation() {
   const projectService = inject(injectionKeys.projectService)!;
@@ -12,15 +12,15 @@ export function useDeleteProjectMutation() {
     mutationKey: [projectQueryKey],
     mutationFn: (project: ProjectDTO) => {
       if (project.id !== undefined) {
-        return projectService.delete(project.id)
+        return projectService.delete(project.id);
       }
 
       return Promise.resolve();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [projectQueryKey],
-      })
+        queryKey: [projectQueryKey]
+      });
     }
   });
 }

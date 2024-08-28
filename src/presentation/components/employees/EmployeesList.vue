@@ -2,13 +2,16 @@
 import { useEmployeesQuery } from '@/infrastructure/employee/queries/useEmployeesQuery';
 import EmployeeSnippet from './EmployeeSnippet.vue';
 
-
 const { data: employees } = useEmployeesQuery();
 </script>
 
 <template>
   <div class="employees-list">
-    <div v-for="employee in employees" :key="employee.id" class="employees-list__item">
+    <div
+      v-for="employee in employees"
+      :key="employee.id"
+      class="employees-list__item"
+    >
       <EmployeeSnippet :full-name="employee.fullName" />
     </div>
   </div>

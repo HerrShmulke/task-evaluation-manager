@@ -1,12 +1,12 @@
-import { IEmployeeRepository } from "@/domain/employee/repository/employee-repository";
-import { IEmployeeService } from "./employee-service.interface";
-import { CreateEmployeeUseCase } from "../use-cases/create-employee-use-case";
-import { DeleteEmployeeUseCase } from "../use-cases/delete-employee-use-case";
-import { GetAllEmployeeUseCase } from "../use-cases/get-all-employee-use-case";
-import { UpdateEmployeeUseCase } from "../use-cases/update-employee-use-case";
-import { EmployeeToSave } from "@/domain/employee/types";
-import { EmployeeDTO } from "../employee-dto";
-import { GetEmployeeUseCase } from "../use-cases/get-employee-use-case";
+import { IEmployeeRepository } from '@/domain/employee/repository/employee-repository';
+import { IEmployeeService } from './employee-service.interface';
+import { CreateEmployeeUseCase } from '../use-cases/create-employee-use-case';
+import { DeleteEmployeeUseCase } from '../use-cases/delete-employee-use-case';
+import { GetAllEmployeeUseCase } from '../use-cases/get-all-employee-use-case';
+import { UpdateEmployeeUseCase } from '../use-cases/update-employee-use-case';
+import { EmployeeToSave } from '@/domain/employee/types';
+import { EmployeeDTO } from '../employee-dto';
+import { GetEmployeeUseCase } from '../use-cases/get-employee-use-case';
 
 export class EmployeeService implements IEmployeeService {
   createEmployeeUseCase: CreateEmployeeUseCase;

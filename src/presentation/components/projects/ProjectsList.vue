@@ -19,16 +19,24 @@ function deleteProject(project: ProjectDTO) {
 const routeService = inject(injectionKeys.routeService)!;
 
 function navigateToEditProject(project: ProjectDTO) {
-  if (project.id !== undefined) { 
-    router.push(routeService.getProjectsEdit(project.id))
+  if (project.id !== undefined) {
+    router.push(routeService.getProjectsEdit(project.id));
   }
 }
 </script>
 
 <template>
   <div class="projects-list">
-    <div v-for="project in projects" :key="project.id" class="projects-list__item">
-      <ProjectsSnippet :name="project.name" @delete="deleteProject(project)" @edit="navigateToEditProject(project)" />
+    <div
+      v-for="project in projects"
+      :key="project.id"
+      class="projects-list__item"
+    >
+      <ProjectsSnippet
+        :name="project.name"
+        @delete="deleteProject(project)"
+        @edit="navigateToEditProject(project)"
+      />
     </div>
   </div>
 </template>

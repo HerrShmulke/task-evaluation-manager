@@ -16,23 +16,23 @@ const props = withDefaults(defineProps<IProps>(), {
 });
 
 const colorRecord: Record<ButtonColor, IButtonColorConfig> = {
-  'primary': {
+  primary: {
     color: ColorService.getBlue(),
-    hoverColor: ColorService.getLightBlue(),
+    hoverColor: ColorService.getLightBlue()
   },
-  'danger': {
+  danger: {
     color: ColorService.getRed(),
-    hoverColor: ColorService.getLightRed(),
+    hoverColor: ColorService.getLightRed()
   },
-  'ghost': {
+  ghost: {
     color: ColorService.getIronsideGray(),
-    hoverColor: ColorService.getBermudaGray(),
+    hoverColor: ColorService.getBermudaGray()
   }
-}
+};
 
 const buttonColor = computed(() => colorRecord[props.color]);
 
-const color = computed(() => buttonColor.value.color);
+const calculatedColor = computed(() => buttonColor.value.color);
 const hoverColor = computed(() => buttonColor.value.hoverColor);
 </script>
 
@@ -45,14 +45,14 @@ const hoverColor = computed(() => buttonColor.value.hoverColor);
 <style>
 .v-button {
   background-color: transparent;
-  border: 1px solid v-bind(color);
+  border: 1px solid v-bind(calculatedColor);
   border-radius: 3px;
-  color: v-bind(color);
+  color: v-bind(calculatedColor);
   cursor: pointer;
   font-size: 1.3rem;
   line-height: 2.7rem;
   padding: 4px 12px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .v-button:hover {

@@ -1,5 +1,5 @@
-import { pages } from "@/infrastructure/routes/pages";
-import { IRouteService } from "./route-service.interface";
+import { pages } from '@/infrastructure/routes/pages';
+import { IRouteService } from './route-service.interface';
 import { IRoute } from './types';
 
 export class RouteService implements IRouteService {
@@ -20,9 +20,12 @@ export class RouteService implements IRouteService {
   }
 }
 
-function getRoute<T extends object = {}>(name: string, params: T): IRoute<T> {
+function getRoute<T extends object = object>(
+  name: string,
+  params: T
+): IRoute<T> {
   return {
     name,
     params
-  }
+  };
 }

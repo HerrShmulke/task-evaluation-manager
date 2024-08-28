@@ -14,14 +14,18 @@ const props = withDefaults(defineProps<IProps>(), {
 });
 
 const model = defineModel<string>({
-  required: true,
+  required: true
 });
 </script>
 
 <template>
   <label class="text-field">
     <VText class="text-field__caption" size="small">{{ props.caption }}</VText>
-    <VInput v-model="model" :placeholder="props.placeholder" :type="props.type" />
+    <VInput
+      v-model="model"
+      :placeholder="props.placeholder"
+      :type="props.type"
+    />
   </label>
 </template>
 
