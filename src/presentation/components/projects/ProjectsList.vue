@@ -37,5 +37,10 @@ function navigateToEditProject(project: ProjectDTO) {
 .projects-list__item {
   margin-bottom: 12px;
   background-color: var(--gray);
+  border: 1px solid transparent;
+}
+
+.projects-list__item:hover {
+  border: 1px solid var(--blue);
 }
 </style>

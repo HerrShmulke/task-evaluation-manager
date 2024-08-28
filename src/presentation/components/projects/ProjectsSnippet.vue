@@ -37,14 +37,9 @@ function onEdit() {
 <style>
 .projects-snippet {
   padding: 16px 20px;
-  border: 1px solid transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.projects-snippet:hover {
-  border: 1px solid var(--blue);
 }
 
 .projects-snippet__actions {
