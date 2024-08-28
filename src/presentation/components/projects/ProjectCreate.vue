@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import VButton from '../buttons/VButton.vue';
 import { inject } from 'vue';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
+import PageHeader from '../PageHeader.vue';
 
 const router = useRouter();
 
@@ -14,17 +15,7 @@ function navigateToCreateProject() {
 </script>
 
 <template>
-  <div class="project-create">
+  <PageHeader>
     <VButton @click="navigateToCreateProject">Создать проект</VButton>
-  </div>
+  </PageHeader>
 </template>
-
-<style>
-.project-create {
-  border-bottom: 1px solid rgba(var(--ironside-gray-rgb), .4);
-  background-color: var(--gray);
-  padding: 16px 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-</style>
