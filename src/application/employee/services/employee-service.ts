@@ -8,7 +8,7 @@ import { EmployeeToSave } from "@/domain/employee/types";
 import { EmployeeDTO } from "../employee-dto";
 import { GetEmployeeUseCase } from "../use-cases/get-employee-use-case";
 
-export class EmplyeeService implements IEmployeeService {
+export class EmployeeService implements IEmployeeService {
   createEmployeeUseCase: CreateEmployeeUseCase;
   deleteEmployeeUseCase: DeleteEmployeeUseCase;
   getAllEmployeeUseCase: GetAllEmployeeUseCase;
