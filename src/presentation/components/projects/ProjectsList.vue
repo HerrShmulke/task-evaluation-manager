@@ -27,7 +27,7 @@ function navigateToEditProject(project: ProjectDTO) {
 
 <template>
   <div class="projects-list">
-    <div v-for="project in projects" class="projects-list__item">
+    <div v-for="project in projects" :key="project.id" class="projects-list__item">
       <ProjectsSnippet :name="project.name" @delete="deleteProject(project)" @edit="navigateToEditProject(project)" />
     </div>
   </div>
