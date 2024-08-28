@@ -3,7 +3,7 @@ import { employeeQueryKey } from "../constants";
 import { useQuery } from "@tanstack/vue-query";
 import { inject } from "vue";
 
-export function useEmployeeQuery() {
+export function useEmployeesQuery() {
   const employeeService = inject(injectionKeys.employeeService)!;
 
   return useQuery({
