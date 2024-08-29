@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, ref } from 'vue';
+import { computed, inject, ref, toRefs } from 'vue';
 import PageWidth from '../components/PageWidth.vue';
 import ProjectForm from '../components/projects/ProjectForm.vue';
 import VText from '../components/VText/VText.vue';
@@ -14,9 +14,9 @@ interface IProps {
   id: number;
 }
 
-const props = defineProps<IProps>();
+const { id } = toRefs(defineProps<IProps>());
 
-const { data: project } = useProjectQuery(props.id);
+const { data: project } = useProjectQuery(id);
 const updateProjectMutation = useUpdateProjectMutation();
 
 const formData = ref<ProjectToSave>();
@@ -39,7 +39,7 @@ async function editProject() {
   if (formData.value === undefined) return;
 
   updateProjectMutation.mutate({
-    id: props.id,
+    id: id.value,
     name: formData.value.name
   });
 
