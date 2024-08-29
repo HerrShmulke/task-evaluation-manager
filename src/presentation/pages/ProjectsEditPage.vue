@@ -54,7 +54,7 @@ async function editProject() {
     >
     <ProjectForm
       v-if="hasFormData"
-      v-model="formData"
+      v-model="formData!"
       submit-text="Изменить"
       @submit="editProject"
     />
