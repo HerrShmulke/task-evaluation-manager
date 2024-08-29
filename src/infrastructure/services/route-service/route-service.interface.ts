@@ -10,4 +10,6 @@ export interface IRouteService {
   getEmployees(): RouteLocationRaw;
 
   getEmployeesCreate(): RouteLocationRaw;
+
+  getEmployeesEdit(id: number): RouteLocationRaw;
 }

@@ -3,5 +3,6 @@ export const pages = {
   projectsCreate: 'ProjectsCreatePage',
   projectsEdit: 'ProjectsEditPage',
   employees: 'EmployeesPage',
-  employeesCreate: 'EmployeesCreatePage'
+  employeesCreate: 'EmployeesCreatePage',
+  employeesEdit: 'EmployeesEditPage'
 } as const;

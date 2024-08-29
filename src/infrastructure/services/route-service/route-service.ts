@@ -22,6 +22,10 @@ export class RouteService implements IRouteService {
   getEmployeesCreate() {
     return getRoute(pages.employeesCreate, {});
   }
+
+  getEmployeesEdit(id: number): RouteLocationRaw {
+    return getRoute(pages.employeesEdit, { id });
+  }
 }
 
 function getRoute<T extends RouteParamsRawGeneric>(
