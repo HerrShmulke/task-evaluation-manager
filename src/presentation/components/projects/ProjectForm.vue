@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TextField from '../input/TextField.vue';
 import VButton from '../buttons/VButton.vue';
-import { Project } from '@/domain/models/project';
+import { ProjectToSave } from '@/domain/project/types';
 
 interface IProps {
   submitText: string;
@@ -14,7 +14,7 @@ interface IEmits {
 const emit = defineEmits<IEmits>();
 const props = defineProps<IProps>();
 
-const model = defineModel<Project>({
+const model = defineModel<ProjectToSave>({
   required: true
 });
 
