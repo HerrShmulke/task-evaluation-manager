@@ -1,6 +1,6 @@
 import { pages } from '@/infrastructure/routes/pages';
 import { IRouteService } from './route-service.interface';
-import { IRoute } from './types';
+import { RouteLocationRaw, RouteParamsRawGeneric } from 'vue-router';
 
 export class RouteService implements IRouteService {
   getProjects() {
@@ -18,12 +18,16 @@ export class RouteService implements IRouteService {
   getEmployees() {
     return getRoute(pages.employees, {});
   }
+
+  getEmployeesCreate() {
+    return getRoute(pages.employeesCreate, {});
+  }
 }
 
-function getRoute<T extends object = object>(
+function getRoute<T extends RouteParamsRawGeneric>(
   name: string,
   params: T
-): IRoute<T> {
+): RouteLocationRaw {
   return {
     name,
     params

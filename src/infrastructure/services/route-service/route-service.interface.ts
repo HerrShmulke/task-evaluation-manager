@@ -1,11 +1,13 @@
-import { IRoute } from './types';
+import { RouteLocationRaw } from 'vue-router';
 
 export interface IRouteService {
-  getProjects(): IRoute;
+  getProjects(): RouteLocationRaw;
 
-  getProjectsCreate(): IRoute;
+  getProjectsCreate(): RouteLocationRaw;
 
-  getProjectsEdit(id: number): IRoute;
+  getProjectsEdit(id: number): RouteLocationRaw;
 
-  getEmployees(): IRoute;
+  getEmployees(): RouteLocationRaw;
+
+  getEmployeesCreate(): RouteLocationRaw;
 }
