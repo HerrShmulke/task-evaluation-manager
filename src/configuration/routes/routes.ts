@@ -1,8 +1,8 @@
 import { useDefaultLayout } from '@/infrastructure/layouts/useDefaultLayout';
 import { getEmployeesRoute } from '@/infrastructure/routes/employees';
-import { getProjectsRoute } from '@/infrastructure/routes/projects';
-import { getProjectsCreateRoute } from '@/infrastructure/routes/projects-create';
-import { getProjectsEditRoute } from '@/infrastructure/routes/projects-edit';
+import { getProjectsRoute } from '@/infrastructure/routes/projects/projects';
+import { getProjectsCreateRoute } from '@/infrastructure/routes/projects/projects-create';
+import { getProjectsEditRoute } from '@/infrastructure/routes/projects/projects-edit';
 
 export const routes = [
   useDefaultLayout([

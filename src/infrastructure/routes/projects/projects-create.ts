@@ -1,5 +1,5 @@
 import { RouteRecordRaw, RouteComponent } from 'vue-router';
-import { pages } from './pages';
+import { pages } from '../pages';
 
 export function getProjectsCreateRoute(
   component: RouteComponent
