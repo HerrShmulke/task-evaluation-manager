@@ -14,7 +14,8 @@ interface IProps {
   id: number;
 }
 
-const { id } = toRefs(defineProps<IProps>());
+const props = defineProps<IProps>();
+const { id } = toRefs(props);
 
 const { data: project } = useProjectQuery(id);
 const updateProjectMutation = useUpdateProjectMutation();
