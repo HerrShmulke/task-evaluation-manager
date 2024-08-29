@@ -12,22 +12,22 @@ interface IProps {
 
 const props = withDefaults(defineProps<IProps>(), {
   color: 'primary',
-  type: 'button'
+  type: 'button',
 });
 
 const colorRecord: Record<ButtonColor, IButtonColorConfig> = {
   primary: {
     color: ColorService.getBlue(),
-    hoverColor: ColorService.getLightBlue()
+    hoverColor: ColorService.getLightBlue(),
   },
   danger: {
     color: ColorService.getRed(),
-    hoverColor: ColorService.getLightRed()
+    hoverColor: ColorService.getLightRed(),
   },
   ghost: {
     color: ColorService.getIronsideGray(),
-    hoverColor: ColorService.getBermudaGray()
-  }
+    hoverColor: ColorService.getBermudaGray(),
+  },
 };
 
 const buttonColor = computed(() => colorRecord[props.color]);

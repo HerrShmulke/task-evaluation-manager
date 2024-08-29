@@ -9,7 +9,7 @@ export function getProjectsEditRoute(
     path: '/projects/:id/edit',
     component,
     props: (route) => ({
-      id: Number(route.params.id)
-    })
+      id: Number(route.params.id),
+    }),
   };
 }

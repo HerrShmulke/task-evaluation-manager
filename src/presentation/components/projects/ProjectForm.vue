@@ -15,7 +15,7 @@ const emit = defineEmits<IEmits>();
 const props = defineProps<IProps>();
 
 const model = defineModel<ProjectToSave>({
-  required: true
+  required: true,
 });
 
 function onSubmit() {

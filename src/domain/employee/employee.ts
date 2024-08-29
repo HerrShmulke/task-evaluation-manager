@@ -13,7 +13,7 @@ export class Employee {
   get properties(): EmployeeProperties {
     return {
       id: this.id,
-      fullName: this.fullName
+      fullName: this.fullName,
     };
   }
 }

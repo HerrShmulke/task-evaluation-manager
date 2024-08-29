@@ -27,7 +27,7 @@ const hasFormData = computed(() => formData.value !== undefined);
 watch(project, () => {
   if (project.value !== undefined) {
     formData.value = {
-      name: project.value.name
+      name: project.value.name,
     };
   }
 });
@@ -41,7 +41,7 @@ async function editProject() {
 
   updateProjectMutation.mutate({
     id: id.value,
-    name: formData.value.name
+    name: formData.value.name,
   });
 
   router.push(routeService.getProjects());

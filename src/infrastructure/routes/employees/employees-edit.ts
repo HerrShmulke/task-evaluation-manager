@@ -9,7 +9,7 @@ export function getEmployeesEditRoute(
     path: '/employees/:id/edit',
     component,
     props: (route) => ({
-      id: Number(route.params.id)
-    })
+      id: Number(route.params.id),
+    }),
   };
 }

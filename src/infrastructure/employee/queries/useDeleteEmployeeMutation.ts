@@ -19,8 +19,8 @@ export function useDeleteEmployeeMutation() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [employeeQueryKey]
+        queryKey: [employeeQueryKey],
       });
-    }
+    },
   });
 }

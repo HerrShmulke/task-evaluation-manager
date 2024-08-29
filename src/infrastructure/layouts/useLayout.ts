@@ -7,6 +7,6 @@ export function useLayout(
   return {
     path: '',
     component: layoutComponent,
-    children: routes
+    children: routes,
   };
 }

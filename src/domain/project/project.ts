@@ -13,7 +13,7 @@ export class Project {
   get properties(): ProjectProperties {
     return {
       id: this.id,
-      name: this.name
+      name: this.name,
     };
   }
 }

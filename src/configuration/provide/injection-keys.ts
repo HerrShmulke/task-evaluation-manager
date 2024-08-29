@@ -6,5 +6,5 @@ import { InjectionKey } from 'vue';
 export const injectionKeys = {
   projectService: Symbol('projectService') as InjectionKey<IProjectService>,
   employeeService: Symbol('employeeService') as InjectionKey<IEmployeeService>,
-  routeService: Symbol('routeService') as InjectionKey<IRouteService>
+  routeService: Symbol('routeService') as InjectionKey<IRouteService>,
 } as const;

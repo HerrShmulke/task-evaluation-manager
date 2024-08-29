@@ -4,5 +4,5 @@ export const pages = {
   projectsEdit: 'ProjectsEditPage',
   employees: 'EmployeesPage',
   employeesCreate: 'EmployeesCreatePage',
-  employeesEdit: 'EmployeesEditPage'
+  employeesEdit: 'EmployeesEditPage',
 } as const;

@@ -10,7 +10,7 @@ interface IProps {
 
 const props = withDefaults(defineProps<IProps>(), {
   tag: 'span',
-  size: 'default'
+  size: 'default',
 });
 
 const textSizeService = new TexSizeService();

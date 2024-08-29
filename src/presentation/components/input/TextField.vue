@@ -10,11 +10,11 @@ interface IProps {
 
 const props = withDefaults(defineProps<IProps>(), {
   placeholder: '',
-  type: undefined
+  type: undefined,
 });
 
 const model = defineModel<string>({
-  required: true
+  required: true,
 });
 </script>
 

@@ -34,6 +34,6 @@ function getRoute<T extends RouteParamsRawGeneric>(
 ): RouteLocationRaw {
   return {
     name,
-    params
+    params,
   };
 }

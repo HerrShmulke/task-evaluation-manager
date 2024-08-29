@@ -17,7 +17,7 @@ export class EmployeeResource implements IEmployeeRepository {
   create(employee: EmployeeToSave): Promise<Employee> {
     const employeeObject: EmployeeProperties = {
       id: this.lastId++,
-      fullName: employee.fullName
+      fullName: employee.fullName,
     };
 
     localStorage.setItem(this.lastIdKey, `${this.lastId}`);
@@ -32,7 +32,7 @@ export class EmployeeResource implements IEmployeeRepository {
     return Promise.resolve(
       Employee.fromProperties({
         id: employeeObject.id,
-        fullName: employeeObject.fullName
+        fullName: employeeObject.fullName,
       })
     );
   }
@@ -74,14 +74,14 @@ export class EmployeeResource implements IEmployeeRepository {
 
     allEmployees[index] = {
       id: employeeId,
-      fullName: employee.fullName
+      fullName: employee.fullName,
     };
 
     localStorage.setItem(this.key, JSON.stringify(allEmployees));
 
     return Employee.fromProperties({
       id: employeeId,
-      fullName: employee.fullName
+      fullName: employee.fullName,
     });
   }
 

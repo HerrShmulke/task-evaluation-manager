@@ -11,6 +11,6 @@ export function useUpdateProjectMutation() {
   return useMutation({
     mutationKey: [projectQueryKey],
     mutationFn: (project: AddId<ProjectToSave>) =>
-      projectService.update(project.id, project)
+      projectService.update(project.id, project),
   });
 }

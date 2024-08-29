@@ -8,6 +8,6 @@ export function useProjectQuery(id: MaybeRef<number>) {
 
   return useQuery({
     queryKey: [projectQueryKey, id],
-    queryFn: () => projectService.getById(unref(id))
+    queryFn: () => projectService.getById(unref(id)),
   });
 }

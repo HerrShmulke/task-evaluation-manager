@@ -9,6 +9,6 @@ export function useCreateEmployeeMutation() {
 
   return useMutation({
     mutationKey: [employeeQueryKey],
-    mutationFn: (employee: EmployeeToSave) => employeeService.create(employee)
+    mutationFn: (employee: EmployeeToSave) => employeeService.create(employee),
   });
 }

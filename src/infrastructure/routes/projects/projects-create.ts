@@ -7,6 +7,6 @@ export function getProjectsCreateRoute(
   return {
     name: pages.projectsCreate,
     path: '/projects/create',
-    component
+    component,
   };
 }

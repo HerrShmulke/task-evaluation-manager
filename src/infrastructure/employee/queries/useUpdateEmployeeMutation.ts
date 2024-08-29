@@ -11,6 +11,6 @@ export function useUpdateEmployeeMutation() {
   return useMutation({
     mutationKey: [employeeQueryKey],
     mutationFn: (employee: AddId<EmployeeToSave>) =>
-      employeeService.update(employee.id, employee)
+      employeeService.update(employee.id, employee),
   });
 }

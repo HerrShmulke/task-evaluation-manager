@@ -19,14 +19,14 @@ const { id } = toRefs(props);
 const { data: employee } = useEmployeeQuery(id.value);
 
 const data = ref<EmployeeToSave>({
-  fullName: ''
+  fullName: '',
 });
 
 watch(employee, () => {
   if (employee.value === undefined) return;
 
   data.value = {
-    fullName: employee.value.fullName
+    fullName: employee.value.fullName,
   };
 });
 
@@ -37,7 +37,7 @@ const router = useRouter();
 function onUpdateEmployee() {
   updateEmployeeMutation.mutate({
     id: id.value,
-    fullName: data.value.fullName
+    fullName: data.value.fullName,
   });
 
   router.push(routeService.getEmployees());

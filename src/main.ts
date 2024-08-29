@@ -9,10 +9,10 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
   queryClientConfig: {
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false
-      }
-    }
-  }
+        refetchOnWindowFocus: false,
+      },
+    },
+  },
 };
 
 ColorService.setVariables(document.body);

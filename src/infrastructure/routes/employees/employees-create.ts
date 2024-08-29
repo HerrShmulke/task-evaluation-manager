@@ -7,6 +7,6 @@ export function getEmployeesCreateRoute(
   return {
     name: pages.employeesCreate,
     path: '/employees/create',
-    component
+    component,
   };
 }

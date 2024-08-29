@@ -21,6 +21,6 @@ export const routes = [
     ),
     getEmployeesEditRoute(
       () => import('@/presentation/pages/EmployeesEditPage.vue')
-    )
-  ])
+    ),
+  ]),
 ] as const;

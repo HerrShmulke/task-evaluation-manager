@@ -17,7 +17,7 @@ export class ProjectResource implements IProjectRepository {
   create(project: ProjectToSave): Promise<Project> {
     const projectObject: ProjectProperties = {
       id: this.lastId++,
-      name: project.name
+      name: project.name,
     };
 
     localStorage.setItem(this.lastIdKey, `${this.lastId}`);
@@ -32,7 +32,7 @@ export class ProjectResource implements IProjectRepository {
     return Promise.resolve(
       Project.fromProperties({
         id: projectObject.id,
-        name: projectObject.name
+        name: projectObject.name,
       })
     );
   }
@@ -69,14 +69,14 @@ export class ProjectResource implements IProjectRepository {
 
     allProjects[index] = {
       id: projectId,
-      name: project.name
+      name: project.name,
     };
 
     localStorage.setItem(this.key, JSON.stringify(allProjects));
 
     return Project.fromProperties({
       id: projectId,
-      name: project.name
+      name: project.name,
     });
   }
 

@@ -5,6 +5,6 @@ export function getEmployeesRoute(component: RouteComponent): RouteRecordRaw {
   return {
     name: pages.employees,
     path: '/employees',
-    component
+    component,
   };
 }

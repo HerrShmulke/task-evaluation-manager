@@ -9,7 +9,7 @@ import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { useRouter } from 'vue-router';
 
 const data = reactive<EmployeeToSave>({
-  fullName: ''
+  fullName: '',
 });
 
 const createEmployeeMutation = useCreateEmployeeMutation();

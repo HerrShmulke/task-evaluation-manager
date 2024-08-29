@@ -19,8 +19,8 @@ export function useDeleteProjectMutation() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [projectQueryKey]
+        queryKey: [projectQueryKey],
       });
-    }
+    },
   });
 }

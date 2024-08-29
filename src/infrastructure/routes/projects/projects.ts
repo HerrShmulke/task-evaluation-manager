@@ -5,6 +5,6 @@ export function getProjectsRoute(component: RouteComponent): RouteRecordRaw {
   return {
     name: pages.projects,
     path: '/projects',
-    component
+    component,
   };
 }

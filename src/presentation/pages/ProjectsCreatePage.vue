@@ -9,7 +9,7 @@ import { ProjectToSave } from '@/domain/project/types';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 
 const formData = ref<ProjectToSave>({
-  name: ''
+  name: '',
 });
 
 const { mutate } = useCreateProjectMutation();
@@ -22,7 +22,7 @@ async function createProject() {
   if (formData.value === undefined) return;
 
   mutate({
-    name: formData.value.name
+    name: formData.value.name,
   });
 
   router.push(routeService.getProjects());

@@ -9,6 +9,6 @@ export function useCreateProjectMutation() {
 
   return useMutation({
     mutationKey: [projectQueryKey],
-    mutationFn: (project: ProjectToSave) => projectService.create(project)
+    mutationFn: (project: ProjectToSave) => projectService.create(project),
   });
 }

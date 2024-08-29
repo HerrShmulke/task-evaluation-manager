@@ -8,6 +8,6 @@ export function useEmployeeQuery(id: MaybeRef<number>) {
 
   return useQuery({
     queryKey: [employeeQueryKey, id],
-    queryFn: () => employeeService.getById(unref(id))
+    queryFn: () => employeeService.getById(unref(id)),
   });
 }

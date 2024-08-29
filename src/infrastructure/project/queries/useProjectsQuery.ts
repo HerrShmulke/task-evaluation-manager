@@ -8,6 +8,6 @@ export function useProjectsQuery() {
 
   return useQuery({
     queryKey: [projectQueryKey],
-    queryFn: () => projectService.getAll()
+    queryFn: () => projectService.getAll(),
   });
 }

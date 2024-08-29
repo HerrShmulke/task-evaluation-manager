@@ -8,6 +8,6 @@ export function useEmployeesQuery() {
 
   return useQuery({
     queryKey: [employeeQueryKey],
-    queryFn: () => employeeService.getAll()
+    queryFn: () => employeeService.getAll(),
   });
 }

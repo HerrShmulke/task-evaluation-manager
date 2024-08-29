@@ -7,7 +7,7 @@ const routeService = inject(injectionKeys.routeService)!;
 
 const navigationList = [
   { name: 'Проекты', to: routeService.getProjects() },
-  { name: 'Сотрудники', to: routeService.getEmployees() }
+  { name: 'Сотрудники', to: routeService.getEmployees() },
 ];
 </script>
 
