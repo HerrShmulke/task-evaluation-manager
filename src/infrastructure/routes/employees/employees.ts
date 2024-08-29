@@ -1,5 +1,5 @@
 import { RouteComponent, RouteRecordRaw } from 'vue-router';
-import { pages } from './pages';
+import { pages } from '../pages';
 
 export function getEmployeesRoute(component: RouteComponent): RouteRecordRaw {
   return {

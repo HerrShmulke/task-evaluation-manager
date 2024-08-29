@@ -1,5 +1,5 @@
 import { useDefaultLayout } from '@/infrastructure/layouts/useDefaultLayout';
-import { getEmployeesRoute } from '@/infrastructure/routes/employees';
+import { getEmployeesRoute } from '@/infrastructure/routes/employees/employees';
 import { getProjectsRoute } from '@/infrastructure/routes/projects/projects';
 import { getProjectsCreateRoute } from '@/infrastructure/routes/projects/projects-create';
 import { getProjectsEditRoute } from '@/infrastructure/routes/projects/projects-edit';
