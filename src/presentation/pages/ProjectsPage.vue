@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import PageWidth from '../components/PageWidth.vue';
-import ProjectCreate from '../components/projects/ProjectCreate.vue';
+import ProjectActions from '../components/projects/ProjectActions.vue';
 import ProjectsList from '../components/projects/ProjectsList.vue';
 </script>
 
 <template>
   <PageWidth class="projects-page">
-    <ProjectCreate class="projects-page__header" />
+    <ProjectActions class="projects-page__header" />
     <ProjectsList />
   </PageWidth>
 </template>
