@@ -6,7 +6,7 @@
   "parser": "vue-eslint-parser",
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
-    "project": "./tsconfig.json",
+    "project": "./tsconfig.json"
   },
   "overrides": [
     {
@@ -29,14 +29,17 @@
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": ["error", {
-      "trailingComma": "es5"
+      "trailingComma": "es5",
+      "bracketSpacing": true,
     }],
     "comma-dangle": ["error", {
       "arrays": "always-multiline",
       "objects": "always-multiline",
-      "imports": "never",
+      "imports": "always-multiline",
       "exports": "never",
       "functions": "never"
     }],
+    "no-debugger": "warn",
+    "no-console": "warn"
   },
 }
