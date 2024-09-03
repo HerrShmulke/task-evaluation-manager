@@ -18,6 +18,7 @@ export class ProjectResource implements IProjectRepository {
     const projectObject: ProjectProperties = {
       id: this.lastId++,
       name: project.name,
+      employees: project.employees,
     };
 
     localStorage.setItem(this.lastIdKey, `${this.lastId}`);
@@ -33,6 +34,11 @@ export class ProjectResource implements IProjectRepository {
       Project.fromProperties({
         id: projectObject.id,
         name: projectObject.name,
+        employees: projectObject.employees.map((employee) => ({
+          fullName: employee.fullName,
+          id: employee.id,
+          projects: [],
+        })),
       })
     );
   }
@@ -70,6 +76,7 @@ export class ProjectResource implements IProjectRepository {
     allProjects[index] = {
       id: projectId,
       name: project.name,
+      employees: project.employees,
     };
 
     localStorage.setItem(this.key, JSON.stringify(allProjects));
@@ -77,6 +84,7 @@ export class ProjectResource implements IProjectRepository {
     return Project.fromProperties({
       id: projectId,
       name: project.name,
+      employees: project.employees,
     });
   }
 

@@ -9,6 +9,7 @@ import { watch } from 'vue';
 import { useUpdateProjectMutation } from '../../infrastructure/project/queries/useUpdateProjectMutation';
 import { ProjectToSave } from '@/domain/project/types';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
+import { useEmployeesQuery } from '@/infrastructure/employee/queries/useEmployeesQuery';
 
 interface IProps {
   id: number;
@@ -28,6 +29,11 @@ watch(project, () => {
   if (project.value !== undefined) {
     formData.value = {
       name: project.value.name,
+      employees: project.value.employees.map((employee) => ({
+        fullName: employee.fullName,
+        id: employee.id,
+        projects: [],
+      })),
     };
   }
 });
@@ -42,10 +48,13 @@ async function editProject() {
   updateProjectMutation.mutate({
     id: id.value,
     name: formData.value.name,
+    employees: formData.value.employees,
   });
 
   router.push(routeService.getProjects());
 }
+
+const { data: employees } = useEmployeesQuery();
 </script>
 
 <template>
@@ -56,6 +65,7 @@ async function editProject() {
     <ProjectForm
       v-if="hasFormData"
       v-model="formData!"
+      :employees="employees"
       submit-text="Изменить"
       @submit="editProject"
     />

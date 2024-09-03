@@ -7,12 +7,16 @@ import { useRouter } from 'vue-router';
 import { useCreateProjectMutation } from '../../infrastructure/project/queries/useCreateProjectMutation';
 import { ProjectToSave } from '@/domain/project/types';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
+import { useEmployeesQuery } from '@/infrastructure/employee/queries/useEmployeesQuery';
 
 const formData = ref<ProjectToSave>({
   name: '',
+  employees: [],
 });
 
 const { mutate } = useCreateProjectMutation();
+
+const { isSuccess, data: employees } = useEmployeesQuery();
 
 const router = useRouter();
 
@@ -23,6 +27,7 @@ async function createProject() {
 
   mutate({
     name: formData.value.name,
+    employees: formData.value.employees,
   });
 
   router.push(routeService.getProjects());
@@ -31,12 +36,14 @@ async function createProject() {
 
 <template>
   <PageWidth class="projects-create-page">
-    <VText tag="h1" class="projects-create-page__title" size="medium"
-      >Создание проекта</VText
-    >
+    <VText tag="h1" class="projects-create-page__title" size="medium">
+      Создание проекта
+    </VText>
     <ProjectForm
+      v-if="isSuccess"
       v-model="formData"
       submit-text="Создать"
+      :employees="employees"
       @submit="createProject"
     />
   </PageWidth>

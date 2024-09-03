@@ -3,13 +3,14 @@ import { IEmployeeRepository } from '@/domain/employee/repository/employee-repos
 import { EmployeeProperties, EmployeeToSave } from '@/domain/employee/types';
 import { ApiEmployee } from './api-employee';
 import { orderBy } from 'lodash-es';
+import { IProjectRepository } from '@/domain/project/repository/project-repository';
 
 export class EmployeeResource implements IEmployeeRepository {
   private lastId: number;
   private key = 'employees';
   private lastIdKey = 'employees:last-id';
 
-  constructor() {
+  constructor(private projectRepository: IProjectRepository) {
     const storageLastId = Number(localStorage.getItem(this.lastIdKey) ?? '0');
     this.lastId = storageLastId;
   }
@@ -18,6 +19,7 @@ export class EmployeeResource implements IEmployeeRepository {
     const employeeObject: EmployeeProperties = {
       id: this.lastId++,
       fullName: employee.fullName,
+      projects: employee.projects,
     };
 
     localStorage.setItem(this.lastIdKey, `${this.lastId}`);
@@ -33,19 +35,42 @@ export class EmployeeResource implements IEmployeeRepository {
       Employee.fromProperties({
         id: employeeObject.id,
         fullName: employeeObject.fullName,
+        projects: employeeObject.projects,
       })
     );
   }
 
-  getAll(): Promise<Employee[]> {
+  async getAll(): Promise<Employee[]> {
     const apiEmployees = orderBy(
       JSON.parse(localStorage.getItem(this.key) ?? '[]') as ApiEmployee[],
       ['id'],
       ['desc']
     );
+    const projects = await this.projectRepository.getAll();
 
-    return Promise.resolve(
-      apiEmployees.map((apiEmployee) => Employee.fromProperties(apiEmployee))
+    const apiEmployeesWithProjects = apiEmployees.map<ApiEmployee>(
+      (apiEmployee) => {
+        const foundProjects = projects.filter(
+          (project) =>
+            project.properties.employees.find(
+              (projectEmployee) => projectEmployee.id === apiEmployee.id
+            ) !== undefined
+        );
+
+        return {
+          fullName: apiEmployee.fullName,
+          id: apiEmployee.id,
+          projects: foundProjects.map((project) => ({
+            id: project.properties.id,
+            name: project.properties.name,
+            employees: [],
+          })),
+        };
+      }
+    );
+
+    return apiEmployeesWithProjects.map((apiEmployee) =>
+      Employee.fromProperties(apiEmployee)
     );
   }
 
@@ -75,6 +100,7 @@ export class EmployeeResource implements IEmployeeRepository {
     allEmployees[index] = {
       id: employeeId,
       fullName: employee.fullName,
+      projects: employee.projects,
     };
 
     localStorage.setItem(this.key, JSON.stringify(allEmployees));
@@ -82,6 +108,7 @@ export class EmployeeResource implements IEmployeeRepository {
     return Employee.fromProperties({
       id: employeeId,
       fullName: employee.fullName,
+      projects: employee.projects,
     });
   }
 

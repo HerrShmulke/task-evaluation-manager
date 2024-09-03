@@ -9,13 +9,12 @@ import { EmployeeResource } from '@/infrastructure/employee/employee-resource';
 type ProvideFn = (key: InjectionKey<unknown>, value: unknown) => void;
 
 export function bindServices(provide: ProvideFn) {
-  provide(
-    injectionKeys.projectService,
-    new ProjectService(new ProjectResource())
-  );
+  const projectResource = new ProjectResource();
+
+  provide(injectionKeys.projectService, new ProjectService(projectResource));
   provide(
     injectionKeys.employeeService,
-    new EmployeeService(new EmployeeResource())
+    new EmployeeService(new EmployeeResource(projectResource))
   );
   provide(injectionKeys.routeService, new RouteService());
 }

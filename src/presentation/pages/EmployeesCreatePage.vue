@@ -10,6 +10,7 @@ import { useRouter } from 'vue-router';
 
 const data = reactive<EmployeeToSave>({
   fullName: '',
+  projects: [],
 });
 
 const createEmployeeMutation = useCreateEmployeeMutation();

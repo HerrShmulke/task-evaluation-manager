@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { ProjectToSave } from '../../../domain/project/types';
 import TextField from '../input/TextField.vue';
 import VButton from '../buttons/VButton.vue';
-import { ProjectToSave } from '@/domain/project/types';
+import ListboxField from '../listbox/ListboxField.vue';
+import { EmployeeDTO } from '../../../application/employee/employee-dto';
+import { computed } from 'vue';
 
 interface IProps {
   submitText: string;
+  employees: EmployeeDTO[];
 }
 
 interface IEmits {
@@ -21,6 +25,14 @@ const model = defineModel<ProjectToSave>({
 function onSubmit() {
   emit('submit');
 }
+
+function getEmployeeListId(item: string) {
+  return item;
+}
+
+const listboxValueOf = computed(() =>
+  model.value.employees.map((employee) => employee.fullName).join(', ')
+);
 </script>
 
 <template>
@@ -30,6 +42,19 @@ function onSubmit() {
       caption="Название проекта"
       placeholder="Рога и копыта"
     />
+    <ListboxField
+      v-model="model.employees"
+      multiple
+      caption="Сотрудники"
+      :list="props.employees"
+      :get-list-id="getEmployeeListId"
+    >
+      {{ listboxValueOf }}
+
+      <template #item="item">
+        {{ item.fullName }}
+      </template>
+    </ListboxField>
     <VButton class="project-form__submit" type="submit">{{
       props.submitText
     }}</VButton>
