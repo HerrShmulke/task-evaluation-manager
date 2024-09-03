@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VText from '../VText/VText.vue';
+import VLabel from '../VLabel/VLabel.vue';
 import VInput from './VInput.vue';
 
 interface IProps {
@@ -19,24 +19,11 @@ const model = defineModel<string>({
 </script>
 
 <template>
-  <label class="text-field">
-    <VText class="text-field__caption" size="small">{{ props.caption }}</VText>
+  <VLabel :label="props.caption">
     <VInput
       v-model="model"
       :placeholder="props.placeholder"
       :type="props.type"
     />
-  </label>
+  </VLabel>
 </template>
-
-<style>
-.text-field {
-  width: 100%;
-}
-
-.text-field__caption {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  display: block;
-}
-</style>
