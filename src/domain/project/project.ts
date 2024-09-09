@@ -1,34 +1,38 @@
+import { Entity } from '../core/entity';
+import { UniqueEntityID } from '../core/unique-entity-id';
 import { Employee } from '../employee/employee';
-import { ProjectProperties } from './types';
+import { ProjectProperties } from './project.properties';
 
-export class Project {
-  private constructor(
-    private readonly id: number,
-    private readonly name: string,
-    private readonly employees: Employee[]
-  ) {}
-
-  static fromProperties(properties: ProjectProperties): Project {
-    return new Project(
-      properties.id,
-      properties.name,
-      properties.employees.map((employee) => Employee.fromProperties(employee))
-    );
+export class Project extends Entity<ProjectProperties> {
+  public get id() {
+    return this._id.value;
   }
 
-  get properties(): ProjectProperties {
-    return {
-      id: this.id,
-      name: this.name,
-      employees: this.employees.map((employee) => ({
-        fullName: employee.properties.fullName,
-        id: employee.properties.id,
-        projects: [],
-      })),
+  public get name() {
+    return this.props.name.value;
+  }
+
+  public get employees() {
+    return this.props.employees.currentItems;
+  }
+
+  private constructor(props: ProjectProperties, id: UniqueEntityID) {
+    super(props, id);
+  }
+
+  public static create(props: ProjectProperties, id: UniqueEntityID): Project {
+    const defaultValues: ProjectProperties = {
+      ...props,
+      // tasks: props.tasks ?? Tasks.create([]),
     };
+
+    return new Project(defaultValues, id);
   }
 
-  addEmployee(employee: Employee): void {
-    this.employees.push(employee);
+  public addEmployee(employee: Employee) {
+    if (this.props.employees === undefined) return;
+    if (this.props.employees.exists(employee)) return;
+
+    this.props.employees.add(employee);
   }
 }

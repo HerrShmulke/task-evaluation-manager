@@ -1,10 +1,14 @@
-import { IEmployeeService } from '@/application/employee/services/employee-service.interface';
 import { IProjectService } from '@/application/project/services/project-service.interface';
 import { IRouteService } from '@/infrastructure/services/route-service/route-service.interface';
-import { InjectionKey } from 'vue';
+import { interfaces } from 'inversify';
+import { employeeKeys } from './employee-keys';
 
 export const injectionKeys = {
-  projectService: Symbol('projectService') as InjectionKey<IProjectService>,
-  employeeService: Symbol('employeeService') as InjectionKey<IEmployeeService>,
-  routeService: Symbol('routeService') as InjectionKey<IRouteService>,
+  employee: employeeKeys,
+  projectService: Symbol(
+    'projectService'
+  ) as interfaces.ServiceIdentifier<IProjectService>,
+  routeService: Symbol(
+    'routeService'
+  ) as interfaces.ServiceIdentifier<IRouteService>,
 } as const;

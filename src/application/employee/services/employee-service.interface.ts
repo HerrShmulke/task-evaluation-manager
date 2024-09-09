@@ -1,10 +1,13 @@
-import { EmployeeToSave } from '@/domain/employee/types';
-import { EmployeeDTO } from '../employee-dto';
+import { EmployeeView } from '../employee-view';
+import { CreateEmployeeDTO } from '../use-cases/create-employee-use-case/create-employee-dto';
+import { DeleteEmployeeDTO } from '../use-cases/delete-employee-use-case/delete-employee-dto';
+import { GetEmployeeDTO } from '../use-cases/get-employee-use-case/get-employee-dto';
+import { UpdateEmployeeDTO } from '../use-cases/update-employee-use-case/update-employee-dto';
 
 export interface IEmployeeService {
-  create(employee: EmployeeToSave): Promise<EmployeeDTO>;
-  update(employeeId: number, employee: EmployeeToSave): Promise<EmployeeDTO>;
-  getById(employeeId: number): Promise<EmployeeDTO>;
-  getAll(): Promise<EmployeeDTO[]>;
-  delete(employeeId: number): Promise<void>;
+  create(createEmployeeDTO: CreateEmployeeDTO): Promise<EmployeeView>;
+  update(updateEmployeeDTO: UpdateEmployeeDTO): Promise<EmployeeView>;
+  getById(getEmployeeDTO: GetEmployeeDTO): Promise<EmployeeView>;
+  getAll(): Promise<EmployeeView[]>;
+  delete(deleteEmployeeDTO: DeleteEmployeeDTO): Promise<void>;
 }

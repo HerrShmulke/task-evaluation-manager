@@ -1,45 +1,45 @@
 export class ColorService {
-  static getBlue() {
+  public static getBlue() {
     return '#4cb7eb';
   }
 
-  static getLightBlue() {
+  public static getLightBlue() {
     return '#80d6ff';
   }
 
-  static getRed() {
+  public static getRed() {
     return '#c95e70';
   }
 
-  static getLightRed() {
+  public static getLightRed() {
     return '#ff7373';
   }
 
-  static getGray() {
+  public static getGray() {
     return '#171717';
   }
 
-  static getIronsideGray() {
+  public static getIronsideGray() {
     return '#666';
   }
 
-  static getBermudaGray() {
+  public static getBermudaGray() {
     return '#6c8694';
   }
 
-  static getBlack() {
+  public static getBlack() {
     return '#080808';
   }
 
-  static getMilk() {
+  public static getMilk() {
     return '#ddd';
   }
 
-  static getIronsideGrayRGB() {
+  public static getIronsideGrayRGB() {
     return '102, 102, 102';
   }
 
-  static setVariables(element: HTMLElement) {
+  public static setVariables(element: HTMLElement) {
     element.style.setProperty('--blue', this.getBlue());
     element.style.setProperty('--light-blue', this.getLightBlue());
     element.style.setProperty('--red', this.getRed());

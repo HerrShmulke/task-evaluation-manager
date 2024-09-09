@@ -1,10 +1,10 @@
 import { Project } from '../project';
-import { ProjectToSave } from '../types';
+import { ProjectProperties } from '../project.properties';
 
 export interface IProjectRepository {
   getById(projectId: number): Promise<Project>;
   getAll(): Promise<Project[]>;
-  create(toSave: ProjectToSave): Promise<Project>;
-  update(projectId: number, toSave: ProjectToSave): Promise<Project>;
+  create(toSave: ProjectProperties): Promise<Project>;
+  update(projectId: number, toSave: ProjectProperties): Promise<Project>;
   delete(projectId: number): Promise<void>;
 }

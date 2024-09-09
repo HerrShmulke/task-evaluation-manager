@@ -1,25 +1,30 @@
 <script setup lang="ts">
-import { EmployeeToSave } from '@/domain/employee/types';
 import EmployeeForm from '@/presentation/components/employees/EmployeeForm.vue';
-import { inject, reactive } from 'vue';
+import { reactive } from 'vue';
 import PageWidth from '../components/PageWidth.vue';
 import VText from '../components/VText/VText.vue';
 import { useCreateEmployeeMutation } from '@/infrastructure/employee/queries/useCreateEmployeeMutation';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { useRouter } from 'vue-router';
+import { CreateEmployeeDTO } from '@/application/employee/use-cases/create-employee-use-case/create-employee-dto';
+import { container } from '@/configuration/provide/container';
 
-const data = reactive<EmployeeToSave>({
+const data = reactive<CreateEmployeeDTO>({
   fullName: '',
-  projects: [],
+  inaccuracy: 0,
 });
 
 const createEmployeeMutation = useCreateEmployeeMutation();
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 const router = useRouter();
 
-function onCreateEmployee() {
-  createEmployeeMutation.mutate(data);
-  router.push(routeService.getEmployees());
+async function onCreateEmployee() {
+  try {
+    await createEmployeeMutation.mutateAsync(data);
+    router.push(routeService.getEmployees());
+  } catch {
+    console.log('asd');
+  }
 }
 </script>
 

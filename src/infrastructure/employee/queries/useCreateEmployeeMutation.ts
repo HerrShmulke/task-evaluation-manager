@@ -1,14 +1,15 @@
 import { useMutation } from '@tanstack/vue-query';
-import { inject } from 'vue';
-import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { employeeQueryKey } from '../constants';
-import { EmployeeToSave } from '@/domain/employee/types';
+import { container } from '@/configuration/provide/container';
+import { CreateEmployeeDTO } from '@/application/employee/use-cases/create-employee-use-case/create-employee-dto';
+import { injectionKeys } from '@/configuration/provide/injection-keys';
 
 export function useCreateEmployeeMutation() {
-  const employeeService = inject(injectionKeys.employeeService)!;
+  const employeeService = container.get(injectionKeys.employee.employeeService);
 
   return useMutation({
     mutationKey: [employeeQueryKey],
-    mutationFn: (employee: EmployeeToSave) => employeeService.create(employee),
+    mutationFn: (employee: CreateEmployeeDTO) =>
+      employeeService.create(employee),
   });
 }

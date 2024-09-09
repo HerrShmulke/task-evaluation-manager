@@ -3,9 +3,9 @@ import { useProjectsQuery } from '@/infrastructure/project/queries/useProjectsQu
 import ProjectsSnippet from './ProjectsSnippet.vue';
 import { useDeleteProjectMutation } from '@/infrastructure/project/queries/useDeleteProjectMutation';
 import { useRouter } from 'vue-router';
-import { inject } from 'vue';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { ProjectDTO } from '@/application/project/project-dto';
+import { container } from '@/configuration/provide/container';
 
 const { data: projects } = useProjectsQuery();
 const router = useRouter();
@@ -16,7 +16,7 @@ function deleteProject(project: ProjectDTO) {
   deleteProjectMutation.mutate(project);
 }
 
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 
 function navigateToEditProject(project: ProjectDTO) {
   if (project.id !== undefined) {

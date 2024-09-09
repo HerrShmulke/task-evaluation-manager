@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useEmployeesQuery } from '@/infrastructure/employee/queries/useEmployeesQuery';
 import EmployeeSnippet from './EmployeeSnippet.vue';
-import { inject } from 'vue';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { useRouter } from 'vue-router';
+import { container } from '@/configuration/provide/container';
 
 const { data: employees } = useEmployeesQuery();
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 const router = useRouter();
 
 function onEditEmployee(id: number) {

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import TextField from '../input/TextField.vue';
 import VButton from '../buttons/VButton.vue';
-import { EmployeeToSave } from '@/domain/employee/types';
+import { CreateEmployeeDTO } from '@/application/employee/use-cases/create-employee-use-case/create-employee-dto';
+import NumberTextField from '../input/NumberTextField.vue';
 
 interface IProps {
   submitText: string;
@@ -14,7 +15,7 @@ interface IEmits {
 const emit = defineEmits<IEmits>();
 const props = defineProps<IProps>();
 
-const model = defineModel<EmployeeToSave>({
+const model = defineModel<CreateEmployeeDTO>({
   required: true,
 });
 
@@ -29,6 +30,11 @@ function onSubmit() {
       v-model="model.fullName"
       caption="Имя сотрудника"
       placeholder="Иванов Александр"
+    />
+    <NumberTextField
+      v-model="model.inaccuracy"
+      caption="Неточность"
+      placeholder="1.5"
     />
     <VButton class="employee-from__submit" type="submit">
       {{ props.submitText }}

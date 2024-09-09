@@ -17,7 +17,7 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
 
 ColorService.setVariables(document.body);
 
-bindServices((key, value) => application.provide(key, value));
+bindServices();
 application
   .use(createAppRouter(routes))
   .use(VueQueryPlugin, vueQueryPluginOptions)

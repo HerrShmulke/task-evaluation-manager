@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { inject } from 'vue';
 import NavigationItem from './NavigationItem.vue';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
+import { container } from '@/configuration/provide/container';
 
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 
 const navigationList = [
   { name: 'Проекты', to: routeService.getProjects() },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, ref } from 'vue';
+import { ref } from 'vue';
 import PageWidth from '../components/PageWidth.vue';
 import ProjectForm from '../components/projects/ProjectForm.vue';
 import VText from '../components/VText/VText.vue';
@@ -8,6 +8,7 @@ import { useCreateProjectMutation } from '../../infrastructure/project/queries/u
 import { ProjectToSave } from '@/domain/project/types';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { useEmployeesQuery } from '@/infrastructure/employee/queries/useEmployeesQuery';
+import { container } from '@/configuration/provide/container';
 
 const formData = ref<ProjectToSave>({
   name: '',
@@ -20,7 +21,7 @@ const { isSuccess, data: employees } = useEmployeesQuery();
 
 const router = useRouter();
 
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 
 async function createProject() {
   if (formData.value === undefined) return;

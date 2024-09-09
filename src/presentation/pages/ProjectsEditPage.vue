@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, ref, toRefs } from 'vue';
+import { computed, ref, toRefs } from 'vue';
 import PageWidth from '../components/PageWidth.vue';
 import ProjectForm from '../components/projects/ProjectForm.vue';
 import VText from '../components/VText/VText.vue';
@@ -10,6 +10,7 @@ import { useUpdateProjectMutation } from '../../infrastructure/project/queries/u
 import { ProjectToSave } from '@/domain/project/types';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 import { useEmployeesQuery } from '@/infrastructure/employee/queries/useEmployeesQuery';
+import { container } from '@/configuration/provide/container';
 
 interface IProps {
   id: number;
@@ -40,7 +41,7 @@ watch(project, () => {
 
 const router = useRouter();
 
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 
 async function editProject() {
   if (formData.value === undefined) return;

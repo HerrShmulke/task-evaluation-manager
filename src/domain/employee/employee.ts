@@ -1,30 +1,25 @@
-import { Project } from '../project/project';
-import { EmployeeProperties } from './types';
+import { Entity } from '../core/entity';
+import { UniqueEntityID } from '../core/unique-entity-id';
+import { EmployeeProperties } from './employee.properties';
 
-export class Employee {
-  private constructor(
-    private readonly id: number,
-    private readonly fullName: string,
-    private readonly projects: Project[]
-  ) {}
-
-  static fromProperties(properties: EmployeeProperties): Employee {
-    return new Employee(
-      properties.id,
-      properties.fullName,
-      properties.projects.map((project) => Project.fromProperties(project))
-    );
+export class Employee extends Entity<EmployeeProperties> {
+  public get id() {
+    return this._id.value;
   }
 
-  get properties(): EmployeeProperties {
-    return {
-      id: this.id,
-      fullName: this.fullName,
-      projects: this.projects.map((project) => ({
-        id: project.properties.id,
-        name: project.properties.name,
-        employees: [],
-      })),
-    };
+  public get inaccuracy() {
+    return this.props.inaccuracy.value;
+  }
+
+  public get fullName() {
+    return this.props.fullName.value;
+  }
+
+  private constructor(props: EmployeeProperties, id: UniqueEntityID) {
+    super(props, id);
+  }
+
+  public static create(props: EmployeeProperties, id: UniqueEntityID) {
+    return new Employee(props, id);
   }
 }

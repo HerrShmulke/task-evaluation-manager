@@ -1,6 +1,5 @@
 import { Project } from '@/domain/project/project';
 import { IProjectRepository } from '@/domain/project/repository/project-repository';
-import { ProjectProperties, ProjectToSave } from '@/domain/project/types';
 import { ApiProject } from './api-project';
 import { orderBy } from 'lodash-es';
 

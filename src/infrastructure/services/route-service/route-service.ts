@@ -1,29 +1,31 @@
 import { pages } from '@/infrastructure/routes/pages';
 import { IRouteService } from './route-service.interface';
 import { RouteLocationRaw, RouteParamsRawGeneric } from 'vue-router';
+import { injectable } from 'inversify';
 
+@injectable()
 export class RouteService implements IRouteService {
-  getProjects() {
+  public getProjects() {
     return getRoute(pages.projects, {});
   }
 
-  getProjectsCreate() {
+  public getProjectsCreate() {
     return getRoute(pages.projectsCreate, {});
   }
 
-  getProjectsEdit(id: number) {
+  public getProjectsEdit(id: number) {
     return getRoute(pages.projectsEdit, { id });
   }
 
-  getEmployees() {
+  public getEmployees() {
     return getRoute(pages.employees, {});
   }
 
-  getEmployeesCreate() {
+  public getEmployeesCreate() {
     return getRoute(pages.employeesCreate, {});
   }
 
-  getEmployeesEdit(id: number): RouteLocationRaw {
+  public getEmployeesEdit(id: number): RouteLocationRaw {
     return getRoute(pages.employeesEdit, { id });
   }
 }

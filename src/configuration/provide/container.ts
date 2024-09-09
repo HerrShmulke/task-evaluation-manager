@@ -1,20 +1,18 @@
-import { ProjectService } from '@/application/project/services/project-service';
-import { injectionKeys } from './injection-keys';
-import { InjectionKey } from 'vue';
-import { ProjectResource } from '@/infrastructure/project/project-resource';
-import { RouteService } from '@/infrastructure/services/route-service/route-service';
+import 'reflect-metadata';
+import { Container } from 'inversify';
 import { EmployeeService } from '@/application/employee/services/employee-service';
-import { EmployeeResource } from '@/infrastructure/employee/employee-resource';
+import { EmployeeMapper } from '@/application/employee/mappers/employee-mapper';
+import { injectionKeys } from './injection-keys';
+import { EmployeeRepository } from '@/infrastructure/employee/employee-repository/employee-repository';
+import { RouteService } from '@/infrastructure/services/route-service/route-service';
 
-type ProvideFn = (key: InjectionKey<unknown>, value: unknown) => void;
+export const container = new Container();
 
-export function bindServices(provide: ProvideFn) {
-  const projectResource = new ProjectResource();
-
-  provide(injectionKeys.projectService, new ProjectService(projectResource));
-  provide(
-    injectionKeys.employeeService,
-    new EmployeeService(new EmployeeResource(projectResource))
-  );
-  provide(injectionKeys.routeService, new RouteService());
+export function bindServices() {
+  container.bind(injectionKeys.employee.employeeService).to(EmployeeService);
+  container.bind(injectionKeys.employee.employeeMapper).to(EmployeeMapper);
+  container
+    .bind(injectionKeys.employee.employeeRepository)
+    .to(EmployeeRepository);
+  container.bind(injectionKeys.routeService).to(RouteService);
 }

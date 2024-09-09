@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import VButton from '../buttons/VButton.vue';
-import { inject } from 'vue';
 import { injectionKeys } from '@/configuration/provide/injection-keys';
 import PageHeader from '../PageHeader.vue';
+import { container } from '@/configuration/provide/container';
 
 const router = useRouter();
 
-const routeService = inject(injectionKeys.routeService)!;
+const routeService = container.get(injectionKeys.routeService)!;
 
 function navigateToCreateEmployee() {
   router.push(routeService.getEmployeesCreate());
