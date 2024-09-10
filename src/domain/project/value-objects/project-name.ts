@@ -7,6 +7,8 @@ export class ProjectName extends ValueObject<ProjectNameProperties> {
   }
 
   public static create(projectName: string) {
+    // @todo Добавить проверки
+
     return new ProjectName({
       value: projectName,
     });

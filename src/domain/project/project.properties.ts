@@ -4,5 +4,4 @@ import { ProjectName } from './value-objects/project-name';
 export interface ProjectProperties {
   name: ProjectName;
   employees: Employees;
-  // tasks: Tasks;
 }

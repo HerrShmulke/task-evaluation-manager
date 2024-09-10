@@ -1,7 +1,5 @@
 export interface ApiProject {
+  id: number;
   name: string;
   employeesIds: number[];
-  totalEmployees: number;
-  tasksIds: number[];
-  totalTasks: number;
 }

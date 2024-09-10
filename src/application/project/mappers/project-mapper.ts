@@ -6,8 +6,9 @@ import { EmployeeView } from '@/application/employee/employee-view';
 import { Employees } from '@/domain/employee/employees';
 import { ProjectName } from '@/domain/project/value-objects/project-name';
 import { UniqueEntityID } from '@/domain/core/unique-entity-id';
+import { IProjectMapper } from './project-mapper.interface';
 
-export class ProjectMapper implements IMapper<Project, ProjectView> {
+export class ProjectMapper implements IProjectMapper {
   public constructor(
     private readonly employeeMapper: IMapper<Employee, EmployeeView>
   ) {}

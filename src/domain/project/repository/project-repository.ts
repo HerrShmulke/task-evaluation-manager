@@ -5,6 +5,6 @@ export interface IProjectRepository {
   getById(projectId: number): Promise<Project>;
   getAll(): Promise<Project[]>;
   create(toSave: ProjectProperties): Promise<Project>;
-  update(projectId: number, toSave: ProjectProperties): Promise<Project>;
+  update(project: Project): Promise<Project>;
   delete(projectId: number): Promise<void>;
 }

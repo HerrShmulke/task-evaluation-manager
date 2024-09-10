@@ -23,7 +23,6 @@ export class Project extends Entity<ProjectProperties> {
   public static create(props: ProjectProperties, id: UniqueEntityID): Project {
     const defaultValues: ProjectProperties = {
       ...props,
-      // tasks: props.tasks ?? Tasks.create([]),
     };
 
     return new Project(defaultValues, id);
